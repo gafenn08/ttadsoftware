@@ -1,0 +1,115 @@
+.admin-menu{
+	#main_wrapper{
+		padding-top: 29px;
+	}
+	.admin-menu-users{
+		display: none;
+		visibility: hidden;
+	}
+}
+.front{
+	.services-free,
+	.services-basic,
+	.services-plus,
+	.services-pro{
+		p{
+			text-indent: 27px;
+		}
+	}
+	@media all and (max-width: 767px){
+		
+		.services-free,
+		.services-basic,
+		.services-plus{
+			padding-bottom: 5px;
+			border-bottom: 1px dotted #ccc;
+			margin-bottom: 15px;
+		}
+	}
+}
+.contact-featured-text{
+	p{
+		padding: 20px 50px 0 50px;
+		font-size: 18px;
+	}
+	.free-trial{
+		padding-left: 50px;
+	}
+}
+.group_subscription_payment_info{
+	padding: 20px;
+	margin: 0 0 20px 20px;
+	border: 1px solid #ddd;
+	.subscription-image{
+		padding-bottom: 10px;
+	}
+	.payment-description{
+		font-size: 24px;
+		color: #bc101d;
+		font-weight: bold;
+		padding-right: 20px;
+		padding-left: 10px;
+	}
+}
+
+
+@media all and (max-width: 767px)  {
+	.group_subscription_payment_info{
+		padding: 10px;
+		margin: 0 0 20px 0;
+		border: 1px solid #ddd;
+		.subscription-image{
+			padding-bottom: 10px;
+			text-align: center;
+		}
+		.payment-description{
+			font-size: 24px;
+			color: #bc101d;
+			font-weight: bold;
+			padding-bottom: 10px;
+			text-align: center;
+		}
+		.buy-now{
+			max-width: 200px;
+			margin: 0 auto;
+		}
+	}
+}
+
+
+.view-id-products{
+	.views-row{
+		background: white;
+		border: 1px solid #ddd;
+		padding: 20px;
+		margin-bottom: 20px;
+		.subscription-payment-description{
+			font-size: 24px;
+			color: #bc101d;
+			padding-bottom: 10px;
+		}
+		.read-more{
+			padding: 7px 14px 8px;
+		}
+		@media all and (max-width: 767px)  {
+			.read-more{
+				text-align: center;
+				padding-top: 15px;
+			}	
+		}
+	}
+}
+
+.footer-full{
+	.copyright{
+		font-size: 16px;
+		padding-bottom: 15px;
+	}
+	.legal{
+		a{
+			font-size: 12px;
+			padding: 0 5px;
+		}
+	}
+
+}
