@@ -1,0 +1,59 @@
+; Theme Info -----------------------------------------------------------------
+; required information about the theme
+
+name = TTAD Software
+description = TTAD Software is an HTML5 theme based on the Foundation Framework by Zurb.
+core = 7.x
+engine = phptemplate
+
+; STYLESHEETS  ---------------------------------------------------------------
+
+; We use [screen] instead of [all] to avoid browser styles affecting
+; other media types. IE stylesheets are loaded through template.php
+
+stylesheets[screen][] = style.css
+
+;We need to drop some of Drupal's core styles
+stylesheets[all][] = system.css
+stylesheets[all][] = system.theme.css
+
+; JAVASCRIPT  ---------------------------------------------------------------
+
+; scripts[] = js/app.js
+
+
+; REGIONS --------------------------------------------------------------------
+
+; these content regions are available for block placement
+; some are special hidden regions: help
+
+regions[header] = Header
+regions[content] = Content
+regions[postscript_first] = Postscript First
+regions[postscript_second] = Postscript Second
+regions[footer] = Footer
+regions[copyright] = Copyright
+regions[affiliates] = Affiliates
+
+; Required regions
+regions[help] = Help
+regions[highlighted] = Highlighted
+regions[page_top] = Page top
+regions[page_bottom] = Page bottom
+
+
+; Options --------------------------------------------------------------------
+; these are the checkboxes that are available on the theme settings page.
+
+; these are the stock options
+
+features[] = logo
+features[] = name
+features[] = slogan
+features[] = node_user_picture
+features[] = comment_user_picture
+features[] = comment_user_verification
+features[] = favicon
+
+
+

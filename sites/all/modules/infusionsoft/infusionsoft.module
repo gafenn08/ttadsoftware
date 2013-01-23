@@ -1,0 +1,106 @@
+<?php
+
+require_once( 'InfusionsoftContact.inc' );
+require_once( 'InfusionsoftData.inc' );
+
+function infusionsoft_permission() {
+  return array(
+    'administer infusionsoft' => array(
+      'title' => t('Administer Infusionsoft'), 
+      'description' => t('Administer infusionsoft settings.'),
+    ),
+    'administer contacts' => array(
+      'title' => t('Administer Contacts'), 
+      'description' => t('Administer infusionsoft contacts.'),  
+    ),
+  );
+}
+
+// this is an implementation of hook_menu. 
+    
+function infusionsoft_menu() {    
+	$items['admin/infusionsoft'] = array(
+	  'title' => 'InfusionSoft',
+	  'description' => 'InfusionSoft Settings',	  	
+	  'access arguments' => array('administer infusionsoft'), 
+	  'weight' => 110,    	
+	);
+
+	 $items['admin/infusionsoft/account'] = array(
+	  'title' => 'Account Settings',
+	  'page callback' => 'drupal_get_form',
+	  'page arguments'  => array('infusionsoft_settings_form'),    
+	  'access arguments' => array('administer infusionsoft'), 
+	  'type' => MENU_LOCAL_TASK,
+	  'weight' => 1,	  	
+	);
+	 $items['admin/infusionsoft/add'] = array(
+	  'title' => 'Add Data',
+	  'page callback' => 'infusionsoft_add_data',  
+	  'access arguments' => array('administer infusionsoft'), 
+	  'type' => MENU_LOCAL_TASK,
+	  'weight' => 2,	  	
+	);	
+  return $items;
+}
+
+
+
+function infusionsoft_settings_form(){
+	$apikey = variable_get('infusionsoft_apikey');
+	$appname = variable_get('infusionsoft_appname');
+	
+	$form = array();
+  	$form['explanation'] = array(
+    	'#markup' => "<div>" . t("Please enter your api key and your application name.") . "</div>",
+  	);
+  	
+  	$form['infusionsoft'] = array(
+  	'#type' => 'fieldset',
+  	'#title' => 'Infusionsoft API Settings',
+  	'#collapsible' => TRUE,
+  );
+  $form['infusionsoft']['apikey'] = array(
+    '#type' => 'textfield',
+    '#title' => t("Enter your api key"),
+    '#default_value' => $apikey, 
+    '#required' => TRUE,
+  );
+  $form['infusionsoft']['appname'] = array(
+    '#type' => 'textfield',
+    '#default_value' => $appname, 
+    '#title' => t("App Name"),
+    '#required' => TRUE,
+    '#description' => t("Enter your App Name (Ex: https://MYAPPNAME.infusionsoft.com/) Do not enter any other part of the URL"),
+  );
+
+  // Include two buttons, each of them calling a different method.
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t("Submit"),
+    '#submit' => array('infusionsoft_settings_submit'),
+  );
+	
+	return $form;
+}
+
+function infusionsoft_settings_submit($form, &$form_state){  
+    variable_set('infusionsoft_apikey', $form_state['values']['apikey']);	
+    variable_set('infusionsoft_appname', $form_state['values']['appname']);
+	drupal_set_message(t('Your settings have been saved.'));
+}
+
+function infusionsoft_add_data(){
+	$table = 'CProgram';
+	$values = new StdClass();
+	
+	$values->ProgramName = "Test Subscription 1";
+	$values->DefaultPrice = 12.20;
+	
+	$data = new InfusionsoftData();
+	
+	$data->addData($table, $values);	
+	dpm("Your Product has been saved");
+	return '';
+}
+

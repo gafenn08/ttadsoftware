@@ -1,0 +1,16 @@
+name = Infusionsoft 
+description = Custom connection to Infusionsoft to purchase subscriptions.
+package = Infusionsoft  
+core = 7.x
+
+dependencies[] = commerce
+
+files[] = infusionsoft.module
+files[] = infusionsoft.install
+files[] = InfusionsoftService.inc
+files[] = InfusionsoftData.inc
+files[] = InfusionsoftContact.inc
+files[] = InfusionsoftInvoice.inc
+files[] = InfusionsoftEmail.inc
+
+
